@@ -29,16 +29,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated();
         http
-                .formLogin();
+                .formLogin()
 
-//        http
-//                .sessionManagement()
-//                .maximumSessions(1)
-//                .maxSessionsPreventsLogin(true);
-
-        http
+                .and()
                 .sessionManagement()
-                .sessionFixation().changeSessionId();
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(false);
 
     }
 }
